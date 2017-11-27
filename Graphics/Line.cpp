@@ -1,38 +1,39 @@
 #include "Line.h"
 
 
-Line::Line()
+MyLine::MyLine()
 {
     this->StartPoint = Vector3(0, 0, 0);
     this->EndPoint = Vector3(0, 10, 0); //  默认在原点处，长度为10使得其可见
 
-    this->Position = &StartPoint;
+    this->Position = &(this->StartPoint);
 }
 
-Line::Line(const Vector3& startPoint, const Vector3& endPoint)
+MyLine::MyLine(const Vector3& startPoint, const Vector3& endPoint)
 {
     this->StartPoint = startPoint;
     this->EndPoint = endPoint;
 
-    this->Position = &StartPoint;
+    this->Position = &(this->StartPoint);
 }
 
-Line::~Line()
+MyLine::~MyLine()
 {
 }
 
-void Line::setStartPoint(Vector3 coordinate)
+void MyLine::setStartPoint(Vector3 coordinate)
 {
     this->StartPoint = coordinate;
 }
 
-void Line::setEndPoint(Vector3 coordinate)
+void MyLine::setEndPoint(Vector3 coordinate)
 {
     this->EndPoint = coordinate;
 }
 
-void Line::render() 
+void MyLine::render()
 {
+    glPointSize(this->getLineWidth());
 	glBegin(GL_POINTS);
     glColor3f(0.0, 0.0, 0.0);
     LineBresenham((int)(this->StartPoint.getX()), (int)(this->StartPoint.getY()), (int)(this->EndPoint.getX()), (int)(this->EndPoint.getY()));
@@ -40,12 +41,12 @@ void Line::render()
 	glFlush();
 }
 
-void Line::setScale(Vector3 newScale)
+void MyLine::setScale(Vector3 newScale)
 {
     this->EndPoint = this->StartPoint + newScale;
 }
 
-void Line::LineBresenham(int x0, int y0, int x1, int y1)
+void MyLine::LineBresenham(int x0, int y0, int x1, int y1)
 {
 	int dx = x1 - x0;
 	int dy = y1 - y0;

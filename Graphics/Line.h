@@ -9,12 +9,12 @@
 #include <GL/glu.h>
 #include "GeometricObject.h"
 
-class Line: public GeometricObject
+class MyLine: public GeometricObject
 {
 public:
-	Line();
-	Line(const Vector3& startPoint, const Vector3& endPoint);
-	~Line();
+    MyLine();
+    MyLine(const Vector3& startPoint, const Vector3& endPoint);
+    ~MyLine();
     void setStartPoint(Vector3 coordinate);
     void setEndPoint(Vector3 coordinate);
 

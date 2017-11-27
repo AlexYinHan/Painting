@@ -15,12 +15,15 @@ public:
     //void resetPosition();
     //void resetRotation();
     Vector3 getPosition();
+    int getLineWidth() const;
+    void setLineWidth(int value);
 
     virtual void render();
-    virtual void setScale(Vector3 newScale);    //  when the scale changes, some points' positions should change accordingly, so currently this function is virtual.
+    virtual void setScale(Vector3 newScale);    //  when the scale changes, some points' positions should change accordingly, so currently this function is virtual.   
 
 protected:
     Vector3* Position;  //  指向图元某一个顶点，用于获取某一个图元的位置
+    int LineWidth = 1;  //  线宽
     //Vector3 Rotation, Scale;
 };
 

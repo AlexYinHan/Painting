@@ -5,12 +5,12 @@
 #include <GL/glu.h>
 #include "GeometricObject.h"
 
-class Circle : public GeometricObject
+class MyCircle : public GeometricObject
 {
 public:
-    Circle();
-    Circle(const Vector3& center, const Vector3& scale);
-    ~Circle();
+    MyCircle();
+    MyCircle(const Vector3& center, const Vector3& scale);
+    ~MyCircle();
 
     void setRadius(int value);
     void setCenter(const Vector3 &value);

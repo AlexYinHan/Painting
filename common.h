@@ -7,7 +7,7 @@
 
 enum CONTENT_DRAWING
 {
-    EMPTY, LINE, CIRCLE, OVAL
+    EMPTY, LINE, CIRCLE, OVAL, RECTANGLE
 };
 
 #include <QtDebug>

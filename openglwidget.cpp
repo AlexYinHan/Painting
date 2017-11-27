@@ -3,6 +3,7 @@
 #include "Graphics/Line.h"
 #include "Graphics/Circle.h"
 #include "Graphics/Oval.h"
+#include "Graphics/Rectangle.h"
 
 OpenglWidget::OpenglWidget(QWidget *parent) :
     QOpenGLWidget(parent),
@@ -30,7 +31,7 @@ void OpenglWidget::mousePressEvent(QMouseEvent *event)
         case LINE:
         {
             Vector3* mousePosition = new Vector3(event->x(), event->y(), 0);
-            selectedGeometricObject = new Line(*mousePosition, *mousePosition);
+            selectedGeometricObject = new MyLine(*mousePosition, *mousePosition);
             this->geometricObjectManager.addObject(selectedGeometricObject);
             //qDebug() << selectedGeometricObject->getPosition().getX();
             break;
@@ -38,7 +39,7 @@ void OpenglWidget::mousePressEvent(QMouseEvent *event)
         case CIRCLE:
         {
             Vector3* mousePosition = new Vector3(event->x(), event->y(), 0);
-            selectedGeometricObject = new Circle(*mousePosition, *mousePosition - *mousePosition);
+            selectedGeometricObject = new MyCircle(*mousePosition, *mousePosition - *mousePosition);
             this->geometricObjectManager.addObject(selectedGeometricObject);
             //qDebug() << selectedGeometricObject->getPosition().getX();
             break;
@@ -46,12 +47,21 @@ void OpenglWidget::mousePressEvent(QMouseEvent *event)
         case OVAL:
         {
             Vector3* mousePosition = new Vector3(event->x(), event->y(), 0);
-            selectedGeometricObject = new Oval(*mousePosition, *mousePosition - *mousePosition);
+            selectedGeometricObject = new MyOval(*mousePosition, *mousePosition - *mousePosition);
+            this->geometricObjectManager.addObject(selectedGeometricObject);
+            //qDebug() << selectedGeometricObject->getPosition().getX();
+            break;
+        }
+        case RECTANGLE:
+        {
+            Vector3* mousePosition = new Vector3(event->x(), event->y(), 0);
+            selectedGeometricObject = new MyRectangle(*mousePosition, *mousePosition);
             this->geometricObjectManager.addObject(selectedGeometricObject);
             //qDebug() << selectedGeometricObject->getPosition().getX();
             break;
         }
         default:
+            qDebug() << "未实现的图元构造函数" << endl;
             break;
         }
     }
@@ -71,10 +81,18 @@ void OpenglWidget::mouseReleaseEvent(QMouseEvent *event)
     if(event->button() == Qt::LeftButton && drawingState == isDrawing)
     {
         drawingState = completeDrawing;
-        selectedGeometricObject = NULL;
+        //selectedGeometricObject = NULL;
     }
 
     //this->geometricObjectManager.printAll();
+}
+
+void OpenglWidget::lineWidthChanged(const int &lineWidth)
+{
+    if(selectedGeometricObject != NULL)
+    {
+        selectedGeometricObject->setLineWidth(lineWidth);
+    }
 }
 
 void OpenglWidget::initializeGL()

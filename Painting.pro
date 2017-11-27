@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     Graphics/Circle.cpp \
     Graphics/GeometricObject.cpp \
     Graphics/Line.cpp \
-    Graphics/Oval.cpp
+    Graphics/Oval.cpp \
+    Graphics/Rectangle.cpp
 
 HEADERS  += mainwindow.h \
     openglwidget.h \
@@ -43,7 +44,8 @@ HEADERS  += mainwindow.h \
     Graphics/Circle.h \
     Graphics/GeometricObject.h \
     Graphics/Line.h \
-    Graphics/Oval.h
+    Graphics/Oval.h \
+    Graphics/Rectangle.h
 
 FORMS    += mainwindow.ui \
     openglwidget.ui

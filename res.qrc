@@ -3,5 +3,6 @@
         <file>res/2dGraphics/Circle.png</file>
         <file>res/2dGraphics/Line.png</file>
         <file>res/2dGraphics/Oval.png</file>
+        <file>res/2dGraphics/Rectangle.png</file>
     </qresource>
 </RCC>

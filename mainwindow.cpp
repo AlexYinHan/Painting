@@ -19,9 +19,10 @@ struct DrawingToolButtonInfo
 DrawingToolButtonInfo drawingToolButtonInfo[] = {
     {":/image/res/2dGraphics/Line.png", LINE},
     {":/image/res/2dGraphics/Circle.png", CIRCLE},
-    {":/image/res/2dGraphics/Oval.png", OVAL}
+    {":/image/res/2dGraphics/Oval.png", OVAL},
+    {":/image/res/2dGraphics/Rectangle.png", RECTANGLE}
 };
-const int drawingToolButtonNum = 3;
+const int drawingToolButtonNum = 4;
 
 QButtonGroup* drawingToolButtons = new QButtonGroup();
 
@@ -51,10 +52,16 @@ MainWindow::MainWindow(QWidget *parent) :
 
         //drawingToolButtons.insert(map<QPushButton*, DrawingToolButtonInfo>::value_type(button, drawingToolButtonInfo[i]));
 
-        // 所有绘图工具按钮在一个垂直布局中
-        ui->gridLayout->addWidget(button, 3, i%3);  //  每行3个
+        // 所有绘图工具按钮在一个布局中
+        ui->gridLayout->addWidget(button, i/3, i%3);  //  每行3个
     }
+
+    //  线宽滑动条
+    ui->lineWidthSlider->setMinimum(1);
+    ui->lineWidthSlider->setMaximum(100);
+
     connect(drawingToolButtons, SIGNAL(buttonToggled(int, bool)), this, SLOT(onDrawingToolButtonToggled(int, bool)));
+    connect(ui->lineWidthSlider, SIGNAL(valueChanged(int)), ui->DrawingArea, SLOT(lineWidthChanged(int)));
 }
 
 MainWindow::~MainWindow()

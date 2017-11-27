@@ -5,12 +5,12 @@
 #include <GL/glu.h>
 #include "GeometricObject.h"
 
-class Oval : public GeometricObject
+class MyOval : public GeometricObject
 {
 public:
-    Oval();
-    Oval(const Vector3& center, const Vector3& scale);
-    ~Oval();
+    MyOval();
+    MyOval(const Vector3& center, const Vector3& scale);
+    ~MyOval();
 
     void setAxisY(int value);
     void setAxisX(int value);

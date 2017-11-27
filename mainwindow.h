@@ -22,7 +22,7 @@ private slots:
 
     void onDrawingToolButtonToggled(int drawingContent, bool checked);
 
- private:
+private:
     Ui::MainWindow *ui;
 
     //std::map<QPushButton*, DrawingToolButtonInfo> drawingToolButtons;   //  存放绘图工具button指针和其对应的信息

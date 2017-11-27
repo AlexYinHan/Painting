@@ -1,6 +1,6 @@
 #include "Circle.h"
 
-Circle::Circle()
+MyCircle::MyCircle()
 {
     this->Center = Vector3(0, 0, 0);
     this->Radius = 5;   //  默认在原点处，半径为5使得其可见
@@ -8,7 +8,7 @@ Circle::Circle()
     this->Position = &(this->Center);
 }
 
-Circle::Circle(const Vector3 &center, const Vector3 &scale)
+MyCircle::MyCircle(const Vector3 &center, const Vector3 &scale)
 {
     this->Center = center;
     this->Radius = (int)(scale.getNorm());
@@ -16,23 +16,24 @@ Circle::Circle(const Vector3 &center, const Vector3 &scale)
     this->Position = &(this->Center);
 }
 
-Circle::~Circle()
+MyCircle::~MyCircle()
 {
 
 }
 
-void Circle::setRadius(int value)
+void MyCircle::setRadius(int value)
 {
     Radius = value;
 }
 
-void Circle::setCenter(const Vector3 &value)
+void MyCircle::setCenter(const Vector3 &value)
 {
     Center = value;
 }
 
-void Circle::render()
+void MyCircle::render()
 {
+    glPointSize(this->getLineWidth());
     glBegin(GL_POINTS);
     glColor3f(0.0, 0.0, 0.0);
     CircleMidpoint((int)(this->Center.getX()), (int)(this->Center.getY()), this->Radius);
@@ -40,7 +41,7 @@ void Circle::render()
     glFlush();
 }
 
-void Circle::setScale(Vector3 newScale)
+void MyCircle::setScale(Vector3 newScale)
 {
     this->Radius = (int)newScale.getNorm();
 }
@@ -58,7 +59,7 @@ static void drawSymmetricalPoints(int x, int y, int x0, int y0)    //  依据第
     glVertex2i(-y + x0, -x + y0);
 }
 
-void Circle::CircleMidpoint(int x0, int y0, int R)
+void MyCircle::CircleMidpoint(int x0, int y0, int R)
 {
     int x, y, deltax, deltay, e;    //  e作为判别式
     x = 0;

@@ -48,3 +48,13 @@ void GeometricObject::setScale(Vector3 newScale)
              << newScale.getX() << ", " << newScale.getY() << ", " << newScale.getY()
              << ")" << endl;
 }
+
+int GeometricObject::getLineWidth() const
+{
+    return LineWidth;
+}
+
+void GeometricObject::setLineWidth(int value)
+{
+    LineWidth = value;
+}
